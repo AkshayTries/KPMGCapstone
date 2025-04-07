@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm border-bottom border-body" data-bs-theme="dark" style=" background:black">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="home" routerLinkActive="active" class="nav-link">Home</a>
+    </li>
+
+    <!-- Show only when logged in -->
+    <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <a routerLink="show-all-employees" routerLinkActive="active" class="nav-link">Employee List</a>
+    </li>
+    <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <a routerLink="add-employee" routerLinkActive="active" class="nav-link">Add Employee</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ms-auto">
+    <!-- Show login if NOT logged in -->
+    <li class="nav-item" *ngIf="!authService.isLoggedIn()" style="margin-right: 4rem;">
+      <a routerLink="admin-login" routerLinkActive="active" class="nav-link">Admin Login</a>
+    </li>
+
+    <!-- Show logout if logged in -->
+    <li class="nav-item" *ngIf="authService.isLoggedIn()" style="margin-right: 4rem;">
+      <a class="nav-link" (click)="logout()">Logout ({{ authService.getAdminName() }})</a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+        // Add an event listener to the link element
+        document.getElementById('loginLink').addEventListener('mouseover', function () {
+            // Change the content of the logout option
+            document.getElementById('logoutOption').innerText = 'Logout Option';
+        });
+
+        // Reset the content when the mouse leaves the link
+        document.getElementById('loginLink').addEventListener('mouseout', function () {
+            document.getElementById('logoutOption').innerText = 'Logout';
+        });
+    </script>
+
+
+<!-- <div class="container"> -->
+
+    <router-outlet></router-outlet>
+<!-- </div> -->
+
+
+<footer class = "footer">
+    <div class = "container">
+        <span>Employee Management System</span>
+    </div>
+</footer>
+

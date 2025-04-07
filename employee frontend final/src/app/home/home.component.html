@@ -1,0 +1,147 @@
+<body>
+
+  <ngb-carousel>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img style="width: 100vw; height: 610px;" src="../assets/2.jpg" alt="Random first slide" />
+      </div>
+      <div class="carousel-caption">
+        <h1 id="p1">Making the world a better place.</h1>
+        <p>Employee Management System</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img style="width: 100vw; height: 610px;" src="../assets/1.jpg" alt="Random second slide" />
+      </div>
+      <div class="carousel-caption">
+        <h3 id="p1">GetBetter Employee Management System</h3>
+        <p>Change the world, one employee at a time</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  
+  <section id="skills" class="section-2 odd highlights image-right counter skills featured">
+    <br><br>
+    <div class="divMain container">
+      <div class="container c1 text">
+        <h1 class="text">Technology Stack Used:</h1>
+        <br>
+        <ul class="category" id="t1">
+          <li>Backend Technology
+            <ul class="subcategory">
+              <li>Java</li>
+              <li>Spring Boot</li>
+            </ul>
+          </li>
+          <li>Frontend Technology
+            <ul class="subcategory">
+              <li>Angular</li>
+            </ul>
+          </li>
+          <li>Database Technology
+            <ul class="subcategory">
+              <li>MySQL</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="../assets/about-5.webp" class="fit-image" alt="Fit Image">
+      </div>
+    </div>
+    <br><br>
+  </section>
+  
+  <section class="about">
+    <br><br>
+    <div class="container">
+      <div class="about-section">
+        <h1>About Us Page</h1>
+        <br>
+        <p>Effectively and systematically manage and document the pertinent details and information of your employees to ensure a thorough and accurate record-keeping system within your organizational framework.</p>
+      </div>
+      <br><br>
+      <h2 style="text-align:center">Our Team</h2>
+      <br><br>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="../assets/mohit.jfif" alt="Jane" style="width:100%">
+            <div class="container">
+              <h2>Mohit Lunia</h2>
+              <p class="title">CEO & Founder</p>
+              <p>Pro developer and technical expert</p>
+              <p>mohit.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <img src="../assets/manoj.jfif" alt="Jane" style="width:100%">
+            <div class="container">
+              <h2>Manoj M</h2>
+              <p class="title">Moral Support Expert</p>
+              <p>I love moral support</p>
+              <p>manoj.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="column">
+          <div class="card">
+            <img src="../assets/rohan.jfif" alt="Mike" style="width:100%">
+            <div class="container">
+              <h2>Rohan B Mahendra</h2>
+              <p class="title">Spring Boot God</p>
+<p>Spring Boot: Make Java go zoom.</p>          <p>rohan.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <img src="../assets/picx.jpeg" alt="Mike" style="width:100%">
+            <div class="container">
+              <h2>Akshay Alva</h2>
+              <p class="title">UI</p>
+<p>RVCE</p>          <p>akshay.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </section>
+  
+  <section class="s1">
+    <br><br>
+    <div class="container">
+      <h1 id="p2">EMPLOYEE MANAGEMENT SYSTEM</h1>
+      <br><br>
+      <div class="navigation">
+        <div class="card" style="width: 18rem;">
+          <img src="../assets/download.jpg" class="card-img-top" alt="Employee List">
+          <div class="card-body">
+            <h5 class="card-title">Employee List</h5>
+            <p class="card-text">List of all Employees</p>
+            <a routerLink="/show-all-employees" class="btn btn-primary">Employee List</a>
+          </div>
+        </div>
+  
+        <div class="card" style="width: 18rem;">
+          <img src="../assets/download.jpg" class="card-img-top" alt="Go somewhere">
+          <div class="card-body">
+            <h5 class="card-title">Employee List (via click)</h5>
+            <p class="card-text">Click below to navigate to Employee List using a method.</p>
+            <button (click)="goToEmployeeList()" class="btn btn-primary">Go to Employee List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </section>
+  
