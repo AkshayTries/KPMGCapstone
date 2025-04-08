@@ -52,6 +52,9 @@ public class Employee {
 	
 	@Column(name="jd")
 	private LocalDate joiningDate;
+
+	@Column(name="photo_path")
+	private String photoPath;
 	
 	public long getId() {
 		return id;
@@ -83,6 +86,14 @@ public class Employee {
 	public void setSalary(long salary) {
 		this.salary = salary;
 	}
+	public String getPhotoPath() {
+        return photoPath;
+    }
+
+	public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
+    }
+
 	public String getDepartment() {
 		return department;
 	}

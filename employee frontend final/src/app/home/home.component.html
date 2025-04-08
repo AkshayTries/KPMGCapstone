@@ -3,11 +3,11 @@
   <ngb-carousel>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        <img style="width: 100vw; height: 610px;" src="../assets/2.jpg" alt="Random first slide" />
+        <img style="width: 100vw; height: 610px;" src="../assets/x.jpg" alt="Random first slide" />
       </div>
       <div class="carousel-caption">
-        <h1 id="p1">Making the world a better place.</h1>
-        <p>Employee Management System</p>
+        <h1 id="p1">KPMG Employee Management System</h1>
+        <p>Change the world, one employee at a time</p>
       </div>
     </ng-template>
     <ng-template ngbSlide>
@@ -15,13 +15,104 @@
         <img style="width: 100vw; height: 610px;" src="../assets/1.jpg" alt="Random second slide" />
       </div>
       <div class="carousel-caption">
-        <h3 id="p1">GetBetter Employee Management System</h3>
-        <p>Change the world, one employee at a time</p>
+        <h3 id="p1">Making the world a better place.</h3>
+        <p>Employee Management System</p>
       </div>
     </ng-template>
   </ngb-carousel>
   
-  <section id="skills" class="section-2 odd highlights image-right counter skills featured">
+  <div class="hero-section">
+    <div class="hero-content">
+        <h1>Employee Management System</h1>
+        <p class="hero-subtitle">Streamline your workforce management with our modern solution</p>
+        <div class="hero-buttons">
+            <button (click)="goToEmployeeList()" class="primary-button">Login As Admin</button>
+           
+
+
+        </div>
+    </div>
+  </div>
+
+  <section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Employee Management</h3>
+                <p>Easily manage your employee database with our intuitive interface.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data Export</h3>
+                <p>Export employee data in PDF format for reporting and analysis.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Real-time Updates</h3>
+                <p>Make changes to employee information in real-time.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="tech-stack-section">
+    <div class="container">
+        <h2 class="section-title">Technology Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>Frontend</h3>
+                <ul>
+                    <li>Angular</li>
+                    <li>TypeScript</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Backend</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>REST API</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Database</h3>
+                <ul>
+                    <li>MySQL</li>
+                    <li>JPA</li>
+                    <li>Hibernate</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About the Project</h2>
+        <div class="about-content">
+            <p>Our Employee Management System is designed to help organizations efficiently manage their workforce. With features like employee data management, real-time updates, and data export capabilities, we make it easy to keep track of your most valuable asset - your people.</p>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Secure</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Available</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Fast</span>
+                    <span class="stat-label">Performance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  <!-- <section id="skills" class="section-2 odd highlights image-right counter skills featured">
     <br><br>
     <div class="divMain container">
       <div class="container c1 text">
@@ -51,97 +142,105 @@
       </div>
     </div>
     <br><br>
-  </section>
+  </section> -->
   
   <section class="about">
     <br><br>
     <div class="container">
-      <div class="about-section">
+      <!-- <div class="about-section">
         <h1>About Us Page</h1>
         <br>
         <p>Effectively and systematically manage and document the pertinent details and information of your employees to ensure a thorough and accurate record-keeping system within your organizational framework.</p>
-      </div>
-      <br><br>
-      <h2 style="text-align:center">Our Team</h2>
-      <br><br>
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="../assets/mohit.jfif" alt="Jane" style="width:100%">
-            <div class="container">
-              <h2>Mohit Lunia</h2>
-              <p class="title">CEO & Founder</p>
-              <p>Pro developer and technical expert</p>
-              <p>mohit.com</p>
-              <p><button class="button">Contact</button></p>
+      </div> -->
+      
+      <!-- <h2 style="text-align:center">Our Team</h2> -->
+   
+      <section class="team-section">
+        <div class="team-container">
+            <h2 class="team-title">Meet Our Team</h2>
+            <p class="team-subtitle">The talented individuals behind our success</p>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="../assets/mohit.jfif" alt="Mohit Lunia" class="team-image">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="https://www.linkedin.com/in/mohit-lunia-607931224/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Mohit Lunia</h3>
+                        <p class="team-position">CEO & Founder</p>
+                        <p class="team-bio">Chief Visionary and Coding Extraordinaire</p>
+                    </div>
+                </div>
+    
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="../assets/manoj.jfif" alt="Manoj M" class="team-image">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="https://www.linkedin.com/in/manoj-m-061444234/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Manoj M</h3>
+                        <p class="team-position">Moral Support Expert</p>
+                        <p class="team-bio">I love moral support</p>
+                    </div>
+                </div>
+    
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="../assets/rohan.jfif" alt="Rohan B Mahendra" class="team-image">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="https://www.linkedin.com/in/rohan-mahendra/?originalSubdomain=in" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Rohan B Mahendra</h3>
+                        <p class="team-position">Spring Boot God</p>
+                        <p class="team-bio">Spring Boot: it’s <i>bean</i> a pleasure.</p>
+                    </div>
+                </div>
+    
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="../assets/picx.jpeg" alt="Akshay Alva" class="team-image">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Akshay Alva</h3>
+                        <p class="team-position">UI</p>
+                        <p class="team-bio">RV</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="column">
-          <div class="card">
-            <img src="../assets/manoj.jfif" alt="Jane" style="width:100%">
-            <div class="container">
-              <h2>Manoj M</h2>
-              <p class="title">Moral Support Expert</p>
-              <p>I love moral support</p>
-              <p>manoj.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="column">
-          <div class="card">
-            <img src="../assets/rohan.jfif" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Rohan B Mahendra</h2>
-              <p class="title">Spring Boot God</p>
-<p>Spring Boot: Make Java go zoom.</p>          <p>rohan.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <img src="../assets/picx.jpeg" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Akshay Alva</h2>
-              <p class="title">UI</p>
-<p>RVCE</p>          <p>akshay.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      </div>
+    </section>
     </div>
     <br><br>
   </section>
   
   <section class="s1">
     <br><br>
-    <div class="container">
-      <h1 id="p2">EMPLOYEE MANAGEMENT SYSTEM</h1>
-      <br><br>
-      <div class="navigation">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/download.jpg" class="card-img-top" alt="Employee List">
-          <div class="card-body">
-            <h5 class="card-title">Employee List</h5>
-            <p class="card-text">List of all Employees</p>
-            <a routerLink="/show-all-employees" class="btn btn-primary">Employee List</a>
-          </div>
-        </div>
-  
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/download.jpg" class="card-img-top" alt="Go somewhere">
-          <div class="card-body">
-            <h5 class="card-title">Employee List (via click)</h5>
-            <p class="card-text">Click below to navigate to Employee List using a method.</p>
-            <button (click)="goToEmployeeList()" class="btn btn-primary">Go to Employee List</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <br><br>
   </section>
   

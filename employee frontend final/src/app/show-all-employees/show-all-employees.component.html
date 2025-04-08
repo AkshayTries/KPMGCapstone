@@ -1,0 +1,64 @@
+<div class="dashboard-container">
+    <div class="header-section">
+        <div class="header-content">
+            <h1>Employee Directory</h1>
+            <div class="search-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search employees..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="action-buttons">
+                    <button (click)="goToAddEmployee()" class="add-button">
+                        Add Employee
+                    </button>
+                    <button (click)="downloadEmployeePDF()" class="download-button">
+                        Download List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="employee-grid">
+        <div class="employee-card" *ngFor="let employee of employees">
+            <div class="card-header">
+                <div class="employee-info">
+                    <h3>{{employee.fname}} {{employee.lname}}</h3>
+                    <span class="employee-id">#{{employee.id}}</span>
+                </div>
+                <span class="department-badge">{{employee.department}}</span>
+            </div>
+            
+            <div class="card-body">
+                <div class="info-row">
+                    <span class="info-label">Designation</span>
+                    <span class="info-value">{{employee.designation}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value">{{employee.email}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Salary</span>
+                    <span class="info-value">₹{{employee.salary}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Joined</span>
+                    <span class="info-value">{{employee.joiningDate | date:'mediumDate'}}</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <button (click)="employeeDetails(employee.id)" class="action-btn view-btn">
+                    View Details
+                </button>
+                <button (click)="updateEmployee(employee.id)" class="action-btn edit-btn">
+                    Edit
+                </button>
+                <button (click)="deleteEmployee(employee.id)" class="action-btn delete-btn">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 

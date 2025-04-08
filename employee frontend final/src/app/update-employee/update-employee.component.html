@@ -83,17 +83,12 @@
                 <input type="text" class="form-control" id="salary" [(ngModel)]="employee.salary" name="salary" required
                     #salary="ngModel" [ngClass]="{ 'is-invalid': f.submitted && salary.errors }" />
 
-
                 <div *ngIf="f.submitted && salary.errors" class="invalid-feedback">
                     <div *ngIf="salary.errors['required']">Salary is required</div>
                 </div>
-
             </div>
 
-
-
-
-            <!-- <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
                 <label><b>Joining Date</b></label>
                 <input required type="text" class="form-control" id="joiningDate" [(ngModel)]="employee.joiningDate"
                     name="joiningDate" required #joiningDate="ngModel"
@@ -101,21 +96,6 @@
                 <div *ngIf="f.submitted && joiningDate.errors" class="invalid-feedback">
                     <div *ngIf="joiningDate.errors['required']">Joining Date is required</div>
                 </div>
-
-
-            </div> -->
-
-
-            <div class="form-group col-md-6">
-                <label><b>Joining Date</b></label>
-                <input required type="date" class="form-control" id="joiningDate" [(ngModel)]="employee.joiningDate"
-                    name="joiningDate" required #joiningDate="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && joiningDate.errors }">
-                <div *ngIf="f.submitted && joiningDate.errors" class="invalid-feedback">
-                    <div *ngIf="joiningDate.errors['required']">Joining Date is required</div>
-                </div>
-
-
             </div>
 
 
