@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 
 
@@ -34,7 +35,8 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
          UpdateEmployeeComponent,
          ShowDetailsComponent,
          AdminLoginComponent,
-         AdminRegisterComponent
+         AdminRegisterComponent,
+         AnnouncementsComponent
   ],
   imports: [
     BrowserModule,

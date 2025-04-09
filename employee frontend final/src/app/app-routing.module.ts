@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AuthGuard } from './auth.guard'; // ✅ Import the guard
-
+import { AnnouncementsComponent } from './announcements/announcements.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'updating-by-id/:id', component: UpdateEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'details-of-employee/:id', component: ShowDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'announcements', component: AnnouncementsComponent, canActivate: [AuthGuard] },
 
   // Public routes
   { path: 'admin-login', component: AdminLoginComponent },

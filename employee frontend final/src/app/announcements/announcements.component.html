@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <!-- Status Alerts -->
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="dismissAlert()"></button>
+  </div>
+  
+  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+    {{ successMessage }}
+    <button type="button" class="btn-close" (click)="dismissAlert()"></button>
+  </div>
+
+  <h2>Announcements</h2>
+
+  <!-- Creation Form -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">New Announcement</h5>
+      <form (ngSubmit)="createAnnouncement()" #announcementForm="ngForm">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Title" 
+                 [(ngModel)]="newAnnouncement.title" name="title" required
+                 [disabled]="isLoading">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="3" placeholder="Content"
+                    [(ngModel)]="newAnnouncement.content" name="content" required
+                    [disabled]="isLoading"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+          <span *ngIf="!isLoading">Post Announcement</span>
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading && announcements.length === 0" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Announcements List -->
+  <div *ngFor="let announcement of announcements" class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h5>{{ announcement.title }}</h5>
+        <button *ngIf="true" class="btn btn-sm btn-danger" 
+                (click)="deleteAnnouncement(announcement.id!)">
+          Delete
+        </button>
+      </div>
+      <p class="mb-1">{{ announcement.content }}</p>
+      <small class="text-muted">
+        Posted on {{ announcement.createdAt | date:'medium' }}
+        <span *ngIf="announcement.createdBy">by {{ announcement.createdBy }}</span>
+      </small>
+    </div>
+  </div>
+
+  <div *ngIf="announcements.length === 0 && !isLoading" class="alert alert-info">
+    No announcements yet. Create your first one!
+  </div>
+</div>
