@@ -33,6 +33,18 @@
         </div>
     </div>
   </div>
+  <div *ngIf="announcements.length > 0" class="announcements-section">
+    <h2 class="announcements-title">Latest Announcements</h2>
+    <ul class="announcements-list">
+      <li *ngFor="let announcement of announcements" class="announcement-card">
+        <h3 class="announcement-title">{{ announcement.title }}</h3>
+        <p class="announcement-content">{{ announcement.content }}</p>
+        <small class="announcement-meta">
+          Posted by {{ announcement.createdBy }} on {{ announcement.createdAt | date:'medium' }}
+        </small>
+      </li>
+    </ul>
+  </div>
 
   <section class="features-section">
     <div class="container">
@@ -236,11 +248,14 @@
     </section>
     </div>
     <br><br>
+   
+    
+    
   </section>
   
-  <section class="s1">
+  <!-- <section class="s1">
     <br><br>
 
     <br><br>
-  </section>
+  </section> -->
   
