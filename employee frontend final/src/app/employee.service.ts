@@ -17,24 +17,28 @@ export class EmployeeService {
   }
 
   // Create employee with optional photo
-  createEmployee(employee: Employee, photo?: File): Observable<Employee> {
-    if (photo) {
-      return this.createEmployeeWithPhoto(employee, photo);
-    } else {
-      return this.httpClient.post<Employee>(`${this.baseURL}`, employee);
-    }
-  }
-
-  // Private method for photo upload
-  private createEmployeeWithPhoto(employee: Employee, photo: File): Observable<Employee> {
-    const formData = new FormData();
-    formData.append('employee', new Blob([JSON.stringify(employee)], {
-      type: 'application/json'
-    }));
-    formData.append('photo', photo);
-    
+  // createEmployee(employee: Employee, photo?: File): Observable<Employee> {
+  //   if (photo) {
+  //     return this.createEmployeeWithPhoto(employee, photo);
+  //   } else {
+  //     return this.httpClient.post<Employee>(`${this.baseURL}`, employee);
+  //   }
+  // }
+  createEmployee(formData: FormData): Observable<Employee> {
     return this.httpClient.post<Employee>(`${this.baseURL}`, formData);
   }
+  
+
+  // Private method for photo upload
+  // private createEmployeeWithPhoto(employee: Employee, photo: File): Observable<Employee> {
+  //   const formData = new FormData();
+  //   formData.append('employee', new Blob([JSON.stringify(employee)], {
+  //     type: 'application/json'
+  //   }));
+  //   formData.append('photo', photo);
+    
+  //   return this.httpClient.post<Employee>(`${this.baseURL}`, formData);
+  // }
 
   // Get single employee
   getEmployeeById(id: number): Observable<Employee> {

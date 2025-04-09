@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AddEmployeeComponent {
   employee: Employee = new Employee();
   selectedFile: File | null = null;
+  previewUrl: string | null = null;
   formSubmitted = false;
 
   constructor(
@@ -20,19 +21,39 @@ export class AddEmployeeComponent {
   ) {}
 
   onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    if (file) {
+      // Validate file size
+      if (file.size > 2 * 1024 * 1024) {
+        alert('File size exceeds 2MB limit.');
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.match(/image\/(jpeg|jpg|png)/)) {
+        alert('Only JPEG and PNG files are allowed.');
+        return;
+      }
+
+      this.selectedFile = file;
+
+      // Preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previewUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
   onSubmit(form: NgForm) {
     this.formSubmitted = true;
-    
+
+    // Form validation
     if (form.invalid) {
       return;
     }
 
-    // Ensure all required fields are set
     if (!this.employee.designation) {
       alert('Please enter a designation');
       return;
@@ -46,13 +67,20 @@ export class AddEmployeeComponent {
       return;
     }
 
-    const createObservable = this.selectedFile
-      ? this.employeeService.createEmployee(this.employee, this.selectedFile)
-      : this.employeeService.createEmployee(this.employee);
+    // Prepare FormData
+    const formData = new FormData();
+    const employeeBlob = new Blob([JSON.stringify(this.employee)], { type: 'application/json' });
+    formData.append('employee', employeeBlob);
 
-    createObservable.subscribe({
+    if (this.selectedFile) {
+      formData.append('photo', this.selectedFile);
+    }
+
+    // Call service
+    this.employeeService.createEmployee(formData).subscribe({
       next: (response: Employee) => {
         console.log('Employee created successfully', response);
+        alert('Employee created successfully!');
         this.goToEmployeeList();
       },
       error: (error: any) => {

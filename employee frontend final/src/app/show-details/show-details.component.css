@@ -1,29 +1,251 @@
-table {
-    width: 40%;
-    margin-left: 8rem;
-    margin-top: 0.5rem;
-    border-collapse: collapse;
-    outline: 1px solid black; 
-  }
-#btn1{
-  margin-left: 8rem;
-
+/* Modern Employee Details UI - 2025 Design System */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: #f7f9fc;
+  color: #2d3748;
+  min-height: 100vh;
 }
 
-#btn2{
-  margin-left: 1rem;
+/* Container styling */
+.container {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
-  .box{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-   
-  }
 
-  img{
-    margin-top: 0.3rem;
-    width: 15rem;
-    height: 12rem;
-  }
+.container h3 {
+  text-align: left;
+  background: white;
+  color: #2d3748;
+  margin: 0;
+  padding: 2rem 2.5rem;
+  font-weight: 700;
+  font-size: 1.75rem;
+  border-bottom: 1px solid #edf2f7;
+}
 
-  
+/* Box layout */
+.box {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+}
+
+@media (max-width: 768px) {
+  .box {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Employee profile section */
+.profile-section {
+  background: #f8fafc;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #edf2f7;
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    border-right: none;
+    border-bottom: 1px solid #edf2f7;
+  }
+}
+
+.employee-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 5px solid white;
+  margin-bottom: 1.5rem;
+}
+
+.employee-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #2d3748;
+}
+
+.employee-designation {
+  color: #718096;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Details section */
+.details-section {
+  padding: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title i {
+  color: #6366f1;
+}
+
+/* Details grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-item {
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #edf2f7;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-label i {
+  color: #6366f1;
+  font-size: 0.875rem;
+}
+
+.detail-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+/* Button styling */
+.btn {
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #6366f1;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.2);
+}
+
+.btn-outline {
+  background: white;
+  color: #6366f1;
+  border: 1px solid #6366f1;
+}
+
+.btn-outline:hover {
+  background: #f0f5ff;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: white;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+}
+
+.btn-danger:hover {
+  background: #fef2f2;
+  color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Department badge */
+.department-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.department-it {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.department-hr {
+  background: #fae8ff;
+  color: #a21caf;
+}
+
+.department-marketing {
+  background: #ecfccb;
+  color: #4d7c0f;
+}
+
+.department-finance {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.department-sales {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+/* Miscellaneous */
+.text-success {
+  color: #10b981;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+.divider {
+  height: 1px;
+  background: #edf2f7;
+  margin: 2rem 0;
+}

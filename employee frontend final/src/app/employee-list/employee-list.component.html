@@ -1,60 +1,175 @@
-<br>
-<br>
-<!-- <h1>Employee List</h1> -->
-
 <div class="container">
-
-    <div >
-        <form (ngSubmit)="goToEmployee()" >
-            <div class="form-group col-md-6 inline ">
-                
-                <input  [(ngModel)]="EnteredID" type="text" class="form-control" id="id" name="id" placeholder="Search by ID">
-                <button class="btn btn-secondary " type="submit">Search</button>
-            </div>
-        </form>
-
+    <h3>Employee Directory</h3>
+  
+    <div class="search-section" style="padding: 1.5rem; background: #f8fafc; border-radius: 12px; margin-bottom: 2rem;">
+      <form (ngSubmit)="goToEmployee()" class="search-form">
+        <div class="search-container" style="display: flex; gap: 1rem; max-width: 500px;">
+          <input [(ngModel)]="EnteredID" 
+                 type="text" 
+                 class="form-control" 
+                 id="id" 
+                 name="id" 
+                 placeholder="Search by ID"
+                 style="flex: 1; border-radius: 8px; padding: 0.75rem; border: 1px solid #e2e8f0;">
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </form>
     </div>
-    <br>
-    <br>
-<div>
-<table style="margin-bottom: 50px;" class=" table table-responsive table-striped  border-dark">
-
-    <thead class="table-dark ">
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <!-- <th>Salary</th> -->
-            <th>Department</th>
-            <th>Designation</th>
-            <!-- <th>Joining Date</th> -->
-            <th>Actions</th>
-        </tr>
-
-    </thead> 
-
-
-    <tbody>
-        <tr *ngFor = "let employee of employees">
-            <td>{{employee.id}}</td>
-            <td>{{employee.fname}}</td>
-            <td>{{employee.lname}}</td>
-            <td>{{employee.email}}</td>
-            <!-- <td>{{employee.salary}}</td> -->
-            <td>{{employee.department}}</td>
-            <td>{{employee.designation}}</td>
-            <!-- <td>{{employee.joiningDate}}</td> -->
-            <td>
-                <button *ngIf="isAdmin" (click)="updateEmployee(employee.id)" class="btn btn-secondary btn-sm">Update</button>
-    <button *ngIf="isAdmin" (click)="deleteEmployee(employee.id)" class="btn btn-danger btn-sm" style="margin-left: 10px">Delete</button>
-    <button (click)="detailsOfEmployee(employee.id)" class="btn btn-success btn-sm" style="margin-left: 10px">View</button>
-            </td>
-        </tr>
-    </tbody>
-
-
-</table>
-<br><br><br><br>
-</div>
-
+  
+    <div class="employee-cards">
+      <div class="employee-card" *ngFor="let employee of employees" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); margin-bottom: 1.5rem; border: 1px solid #edf2f7;">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid #edf2f7;">
+          <div class="employee-identifier">
+            <span class="employee-id" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 4px;">ID: {{employee.id}}</span>
+          </div>
+          
+          <span class="department-badge" 
+                [ngClass]="{'department-it': employee.department === 'IT', 
+                           'department-hr': employee.department === 'HR',
+                           'department-marketing': employee.department === 'Marketing',
+                           'department-finance': employee.department === 'Finance',
+                           'department-sales': employee.department === 'Sales'}">
+            {{employee.department}}
+          </span>
+        </div>
+        
+        <div class="card-body" style="padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+          <div class="employee-info">
+            <h5 style="font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">{{employee.fname}} {{employee.lname}}</h5>
+            <p style="color: #64748b; margin: 0 0 0.5rem 0; font-size: 0.9rem;">{{employee.designation}}</p>
+            <p style="color: #64748b; margin: 0; font-size: 0.85rem;">{{employee.email}}</p>
+          </div>
+          
+          <div class="card-actions" style="display: flex; gap: 0.5rem;">
+            <button (click)="detailsOfEmployee(employee.id)" class="btn btn-outline" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;">
+              <i class="fas fa-eye"></i> View
+            </button>
+            <button *ngIf="isAdmin" (click)="updateEmployee(employee.id)" class="btn btn-primary" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button *ngIf="isAdmin" (click)="deleteEmployee(employee.id)" class="btn btn-danger" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Alternative table view that can be toggled -->
+    <div class="table-view" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); margin-top: 2rem; display: none;">
+      <div class="table-header" style="padding: 1rem 1.5rem; border-bottom: 1px solid #edf2f7; display: flex; justify-content: space-between; align-items: center;">
+        <h5 style="margin: 0; font-weight: 600;">Employee List</h5>
+        <button class="btn btn-outline" style="padding: 0.5rem 0.75rem; font-size: 0.8rem;">
+          <i class="fas fa-th-large"></i> Card View
+        </button>
+      </div>
+      
+      <div class="table-responsive" style="padding: 0.5rem;">
+        <table class="table" style="margin-bottom: 0;">
+          <thead style="background: #f8fafc;">
+            <tr>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">ID</th>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">Name</th>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">Email</th>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">Department</th>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">Role</th>
+              <th style="padding: 1rem; font-weight: 600; color: #475569; font-size: 0.9rem;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 1rem; vertical-align: middle;">{{employee.id}}</td>
+              <td style="padding: 1rem; vertical-align: middle;">{{employee.fname}} {{employee.lname}}</td>
+              <td style="padding: 1rem; vertical-align: middle;">{{employee.email}}</td>
+              <td style="padding: 1rem; vertical-align: middle;">
+                <span class="department-badge" 
+                      [ngClass]="{'department-it': employee.department === 'IT', 
+                                 'department-hr': employee.department === 'HR',
+                                 'department-marketing': employee.department === 'Marketing',
+                                 'department-finance': employee.department === 'Finance',
+                                 'department-sales': employee.department === 'Sales'}"
+                      style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">
+                  {{employee.department}}
+                </span>
+              </td>
+              <td style="padding: 1rem; vertical-align: middle;">{{employee.designation}}</td>
+              <td style="padding: 1rem; vertical-align: middle;">
+                <div style="display: flex; gap: 0.5rem;">
+                  <button (click)="detailsOfEmployee(employee.id)" class="btn btn-outline" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button *ngIf="isAdmin" (click)="updateEmployee(employee.id)" class="btn btn-primary" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button *ngIf="isAdmin" (click)="deleteEmployee(employee.id)" class="btn btn-danger" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+  .btn {
+    margin-right: 0; /* Override your previous style */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .search-container input:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    outline: none;
+  }
+  
+  .employee-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card-body {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .card-actions {
+      margin-top: 1rem;
+      align-self: flex-end;
+    }
+  }
+  
+  /* Animation for card appearance */
+  .employee-card {
+    transition: all 0.3s ease;
+  }
+  
+  /* Optional: Add a toggle button functionality with JavaScript */
+  function toggleView() {
+    const cardView = document.querySelector('.employee-cards');
+    const tableView = document.querySelector('.table-view');
+    
+    if (cardView.style.display === 'none') {
+      cardView.style.display = 'block';
+      tableView.style.display = 'none';
+    } else {
+      cardView.style.display = 'none';
+      tableView.style.display = 'block';
+    }
+  }
+  </style>

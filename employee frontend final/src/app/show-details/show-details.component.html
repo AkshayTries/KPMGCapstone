@@ -1,9 +1,8 @@
 <div class="container">
   <h3>Employee Details</h3>
-  <br>
   <div class="box">
-    <div>
-      <!-- Updated image tag to display uploaded photo -->
+    <div class="profile-section">
+      <!-- Employee photo with fallback -->
       <img *ngIf="photoUrl && !photoError" 
            [src]="photoUrl" 
            alt="Employee Photo" 
@@ -13,55 +12,85 @@
            src="../assets/download.jpg" 
            alt="Default Photo" 
            class="employee-photo">
+      
+      <h4 class="employee-name">{{employee.fname}} {{employee.lname}}</h4>
+      <p class="employee-designation">{{employee.designation}}</p>
+      
+      <!-- Department badge -->
+      <span class="department-badge" 
+            [ngClass]="{'department-it': employee.department === 'IT', 
+                       'department-hr': employee.department === 'HR',
+                       'department-marketing': employee.department === 'Marketing',
+                       'department-finance': employee.department === 'Finance',
+                       'department-sales': employee.department === 'Sales'}">
+        {{employee.department}}
+      </span>
+      
+      <div class="profile-actions">
+        <a routerLink="/updating-by-id/{{employee.id}}" class="btn btn-primary">
+          <i class="fas fa-edit"></i> Update Details
+        </a>
+        <button (click)="deleteEmployee()" class="btn btn-danger">
+          <i class="fas fa-trash-alt"></i> Delete Employee
+        </button>
+      </div>
     </div>
     
-    <div>
-      <table class="table table-striped border-dark">
-        <thead class="table-dark">        
-          <tr>
-            <th>Attribute</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b>Id</b></td>
-            <td>{{employee.id}}</td>
-          </tr>
-          <tr>
-            <td><b>First Name</b></td>
-            <td>{{employee.fname}}</td>
-          </tr>
-          <tr>
-            <td><b>Last Name</b></td>
-            <td>{{employee.lname}}</td>
-          </tr>
-          <tr>
-            <td><b>Email</b></td>
-            <td>{{employee.email}}</td>
-          </tr>
-          <tr>
-            <td><b>Salary</b></td>
-            <td>{{employee.salary}}</td>
-          </tr>
-          <tr>
-            <td><b>Department</b></td>
-            <td>{{employee.department}}</td>
-          </tr>
-          <tr>
-            <td><b>Designation</b></td>
-            <td>{{employee.designation}}</td>
-          </tr>
-          <tr>
-            <td><b>Joining Date</b></td>
-            <td>{{employee.joiningDate}}</td>
-          </tr>
-        </tbody>    
-      </table>
-
-      <div class="d-flex justify-content-between">
-        <a routerLink="/updating-by-id/{{employee.id}}" id="btn1" class="btn btn-secondary">Update Details</a>
-        <button (click)="deleteEmployee()" class="btn btn-danger">Delete Employee</button>
+    <div class="details-section">
+      <h5 class="section-title">
+        <i class="fas fa-id-card"></i> Personal Information
+      </h5>
+      
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-fingerprint"></i> Employee ID
+          </div>
+          <div class="detail-value">{{employee.id}}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-envelope"></i> Email
+          </div>
+          <div class="detail-value">{{employee.email}}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-money-bill-wave"></i> Salary
+          </div>
+          <div class="detail-value">${{employee.salary}}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-calendar-alt"></i> Joining Date
+          </div>
+          <div class="detail-value">{{employee.joiningDate | date:'mediumDate'}}</div>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <h5 class="section-title">
+        <i class="fas fa-briefcase"></i> Professional Information
+      </h5>
+      
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-user-tie"></i> Designation
+          </div>
+          <div class="detail-value">{{employee.designation}}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">
+            <i class="fas fa-building"></i> Department
+          </div>
+          <div class="detail-value">{{employee.department}}</div>
+        </div>
       </div>
     </div>
   </div>
