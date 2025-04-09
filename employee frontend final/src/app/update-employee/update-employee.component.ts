@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateEmployeeComponent {
   id: number;
   employee: Employee = new Employee();
+  selectedFile: File | null = null;
 
   constructor(
     private employeeService: EmployeeService,
@@ -31,14 +32,22 @@ export class UpdateEmployeeComponent {
     );
   }
 
-  onSubmit() {
-    this.employeeService.updateEmployee(this.id, this.employee).subscribe(
-      data => {
-        this.goToEmployeeList();
-      },
-      error => console.log(error)
-    );
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
+
+  onSubmit() {
+    // Remove the selectedFile parameter since we're not updating photos
+    this.employeeService.updateEmployee(this.id, this.employee).subscribe({
+        next: (data) => {
+            this.goToEmployeeList();
+        },
+        error: (error) => {
+            console.error('Update error:', error);
+            // Add user-friendly error handling here
+        }
+    });
+}
 
   goToEmployeeList() {
     this.router.navigate(['/show-all-employees']);

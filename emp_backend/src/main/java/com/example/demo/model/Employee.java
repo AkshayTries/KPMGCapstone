@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity 
@@ -51,7 +51,8 @@ public class Employee {
 	private String designation;
 	
 	@Column(name="jd")
-	private LocalDate joiningDate;
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+private LocalDate joiningDate;
 
 	@Column(name="photo_path")
 	private String photoPath;

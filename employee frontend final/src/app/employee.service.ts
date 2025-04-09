@@ -41,13 +41,16 @@ export class EmployeeService {
     return this.httpClient.get<Employee>(`${this.baseURL}/${id}`);
   }
 
-  // Update employee
+  // Update employee with optional photo
   updateEmployee(id: number, employee: Employee): Observable<Employee> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.httpClient.put<Employee>(`${this.baseURL}/${id}`, employee, { headers });
-  }
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.httpClient.put<Employee>(
+        `${this.baseURL}/${id}`, 
+        employee,
+        { headers }
+    );
+}
+  
 
   // Delete employee
   deleteEmployee(id: number): Observable<Object> {
@@ -69,12 +72,5 @@ export class EmployeeService {
     });
     
     return fullUrl;
-  }
-
-  // Download employee list as PDF
-  downloadEmployeePDF(): Observable<Blob> {
-    return this.httpClient.get(`${this.baseURL}/download-pdf`, {
-      responseType: 'blob'
-    });
   }
 }
